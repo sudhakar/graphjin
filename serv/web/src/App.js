@@ -42,9 +42,9 @@ const App = () => {
 
   useEffect(() => {
     (async function () {
-      let introspect = fetcher({ query: getIntrospectionQuery() });
-      let res = await introspect.next();
-      setSchema(buildClientSchema(res.value.data));
+      let introspect = fetcher({ query: getIntrospectionQuery(), operationName: 'IntrospectionQuery' });
+      let res = await introspect;
+      setSchema(buildClientSchema(res.data));
     })();
   }, []);
 

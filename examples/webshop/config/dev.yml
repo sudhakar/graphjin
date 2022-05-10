@@ -122,7 +122,7 @@ db_schema_poll_duration: 20s
 
 auth:
   # Can be 'none', 'rails', 'jwt' or 'header'
-  type: none
+  type: header
   cookie: _webshop_session
 
   # Comment this out if you want to disable setting
@@ -157,10 +157,10 @@ auth:
   #   secret: abc335bfcfdb04e50db5bb0a4d67ab9
   #   public_key_file: /secrets/public_key.pem
   #   public_key_type: ecdsa #rsa
-  # header:
-  #   name: dnt
-  #   exists: true
-  #   value: localhost:8080
+  header:
+    name: dnt
+    exists: false
+    value: localhost:8080
 
 # You can add additional named auths to use with actions
 # In this example actions using this auth can only be
@@ -296,15 +296,15 @@ roles:
   # if `auth.type` is set to a valid auth type then
   # all tables are blocked for the anon role unless
   # added to the role like below.
-  # - name: anon
-  #   tables:
-  #     - name: users
-  #     - name: products
-  #     - name: categories
-  #     - name: deals
-  #     - name: purchases
-  #     - name: customers
-  #     - name: notifications
+  - name: anon
+    tables:
+      - name: users
+      - name: products
+      - name: categories
+      - name: deals
+      - name: purchases
+      - name: customers
+      - name: notifications
 
   - name: user
     tables:
